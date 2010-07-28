@@ -1,0 +1,4 @@
+The DTI scans were performed as 2D multi-slice with 21 slices covering  
+the whole heart. In plane experimental resolution is 203 x 203 micron,  
+which I've then zero-filled by a factor of two. Out of plane  
+resolution (slice thickness) is 1mm.
