@@ -1,4 +1,4 @@
-function WriteMetaFile(filename, img, resolution, data_type)
+function write_mhd_files(filename, img, resolution, data_type)
 
 % construct file names
 [pathstr,name]=fileparts(filename);

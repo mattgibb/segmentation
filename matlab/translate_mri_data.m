@@ -26,7 +26,7 @@ function translate_mri_data(filename)
     
     img = scale_data(img, data_type);
     
-    WriteMetaFile(filename, img, resolution, data_type);
+    write_mhd_files(filename, img, resolution, data_type);
     
 end
 
