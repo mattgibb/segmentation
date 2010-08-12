@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+require 'segmentation/dirs'
+include Segmentation::Dirs
+
+data_set = 'Rat24'
+dtmri_dir(data_set)
+results_dir(data_set)
+
+# arguments
+program = itk_program("Threshold")
+input_image = File.join dtmri_dir(data_set), ARGV[0]
+output_image = File.join results_dir(data_set), ARGV[1]
+seed_image = File.join results_dir(data_set), ARGV[2]
+initial_distance = ARGV[3]
+lower_threshold = ARGV[4]
+upper_threshold = ARGV[5]
+curvature_scaling = ARGV[6]
+
+# run program
+system program,
+       input_image,
+       output_image,
+       seed_image,
+       initial_distance,
+       lower_threshold,
+       upper_threshold,
+       curvature_scaling
