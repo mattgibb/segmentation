@@ -1,10 +1,8 @@
 function write_mhd_files(filename, img, resolution, data_type)
 
 % construct file names
-[pathstr,name]=fileparts(filename);
-mhd = strcat(pathstr, '/', name, '.mhd');
-raw = strcat(pathstr, '/', name, '.raw');
-
+mhd = strcat(filename, '.mhd');
+raw = strcat(filename, '.raw');
 
 % write mhd file
 fid=fopen(mhd, 'w');
@@ -39,6 +37,7 @@ elseif(strcmp(data_type, 'float32'))
 end
 
 fprintf(fid, 'ElementByteOrderMSB = False\n');
+[pathstr,name]=fileparts(filename);
 fprintf(fid, 'ElementDataFile = %s\n', strcat(name, '.raw'));
 fclose(fid);
 
