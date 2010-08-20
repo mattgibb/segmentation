@@ -10,7 +10,7 @@ task :run do
      "rt0024_unmasked_tidy_rewrite_ADC.mhd " +
      "rt0024_unmasked_tidy_rewrite_ADC_threshold_level_set.mhd " +
      "rt0024_unmasked_tidy_rewrite_ADC_threshold.mhd " +
-     "0 " + 
+     "3 " + 
      "49 " +
      "70 " +
      "1"

@@ -16,33 +16,41 @@
 #include <iostream>
 #include <time.h>
 
+// My files
+#include "Dirs.hpp"
+
 using namespace std;
 using namespace itk;
 
 int main( int argc, char *argv[] ) {
-  if( argc < 7 ) {
+  if( argc < 8 ) {
     cerr << "Missing Parameters " << endl;
     cerr << "Usage: " << argv[0];
+    cerr << " dataSet";
     cerr << " inputImage outputImage";
     cerr << " seedImage initialDistance";
     cerr << " lowerThreshold";
     cerr << " upperThreshold";
-    cerr << " curvatureScaling";
+    cerr << " curvatureScaling=1.0";
     cerr << endl;
     return 1;
   }
   
-  cout << "test\n";
+  Dirs::SetDataSet(argv[1]);
+  
   // name the inputs for clarity and interface flexibility
   // Change to GetPot
-  const string inputImageName(argv[1]),
-               outputImageName(argv[2]),
-               seedImageName(argv[3]);
-         
-  const float initialDistance( atof( argv[4] ) ),
-              lowerThreshold( atof(argv[5]) ),
-              upperThreshold( atof(argv[6]) ),
-              curvatureScaling( atof(argv[7]) );
+  const string inputImageName(argv[2]),
+               outputImageName(argv[3]),
+               seedImageName(argv[4]);
+  
+  const float initialDistance( atof( argv[5] ) ),
+              lowerThreshold( atof(argv[6]) ),
+              upperThreshold( atof(argv[7]) );
+  
+  float curvatureScaling;
+  if (argc < 9 ) { curvatureScaling = 1.0; }
+  else           { curvatureScaling = atof(argv[8]); }
   
   // Starts the clock
   clock_t start = clock();  
@@ -72,11 +80,11 @@ int main( int argc, char *argv[] ) {
   SeedReaderType::Pointer seedReader = SeedReaderType::New();
   WriterType::Pointer writer = WriterType::New();
   
-  reader->SetFileName( inputImageName );
-  seedReader->SetFileName( seedImageName );
-  writer->SetFileName( outputImageName );
+  reader->SetFileName( Dirs::DTMRIDir() + inputImageName );
+  seedReader->SetFileName( Dirs::ResultsDir() + seedImageName );
+  writer->SetFileName( Dirs::ResultsDir() + outputImageName );
   
-  typedef  itk::FastMarchingImageFilter< InternalImageType, InternalImageType > FastMarchingFilterType;
+  typedef itk::FastMarchingImageFilter< InternalImageType, InternalImageType > FastMarchingFilterType;
   FastMarchingFilterType::Pointer fastMarching = FastMarchingFilterType::New();
   
   typedef  itk::ThresholdSegmentationLevelSetImageFilter< InternalImageType, InternalImageType > ThresholdSegmentationLevelSetImageFilterType;
@@ -134,8 +142,16 @@ int main( int argc, char *argv[] ) {
 
   try {
     reader->Update();
-    fastMarching->SetOutputSize( reader->GetOutput()->GetBufferedRegion().GetSize() );
+    const InternalImageType * inputImage = reader->GetOutput();
+    fastMarching->SetOutputSize( inputImage->GetBufferedRegion().GetSize() );
+    // TEMP
+    // fastMarching->SetOutputRegion( inputImage->GetBufferedRegion() );
+    // fastMarching->SetOutputSpacing( inputImage->GetSpacing() );
+    // fastMarching->SetOutputOrigin( inputImage->GetOrigin() );
+    // fastMarching->SetOutputDirection( inputImage->GetDirection() );
+    // TEMP
     writer->Update();
+    
   }
   catch( itk::ExceptionObject & excep ) {
     std::cerr << "Exception caught !" << std::endl;
@@ -159,17 +175,17 @@ int main( int argc, char *argv[] ) {
   
   InternalWriterType::Pointer mapWriter = InternalWriterType::New();
   mapWriter->SetInput( fastMarching->GetOutput() );
-  mapWriter->SetFileName("fastMarchingImage.mhd");
+  mapWriter->SetFileName(Dirs::ResultsDir() + "fastMarchingImage.mha");
   mapWriter->Update();
 
   InternalWriterType::Pointer speedWriter = InternalWriterType::New();
   speedWriter->SetInput( thresholdSegmentation->GetSpeedImage() );
-  speedWriter->SetFileName("speedTermImage.mhd");
+  speedWriter->SetFileName(Dirs::ResultsDir() + "speedTermImage.mha");
   speedWriter->Update();
 
   InternalWriterType::Pointer levelSetWriter = InternalWriterType::New();
   levelSetWriter->SetInput( thresholdSegmentation->GetOutput() );
-  levelSetWriter->SetFileName("thresholdSegmentationImage.mhd");
+  levelSetWriter->SetFileName(Dirs::ResultsDir() + "thresholdSegmentationImage.mha");
   levelSetWriter->Update();
 
   clock_t ends = clock();

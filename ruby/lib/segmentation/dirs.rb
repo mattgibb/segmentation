@@ -4,9 +4,10 @@ module Segmentation
     IMAGES_DIR = File.join(PROJECT_ROOT_DIR, "images")
     CONFIG_DIR = File.join(PROJECT_ROOT_DIR, "config")
     RESULTS_DIR = File.join(PROJECT_ROOT_DIR, "results")
+    ITK_DIR = File.join(PROJECT_ROOT_DIR, "itk")
     
     def itk_program(name)
-      File.join PROJECT_ROOT_DIR, "itk", name
+      File.join(ITK_DIR, name)
     end
     
     def dtmri_dir(data_set)
