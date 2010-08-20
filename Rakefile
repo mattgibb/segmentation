@@ -5,16 +5,16 @@ include FileUtils::Verbose
 task :default => [:make]
 
 desc "Run segmentation"
-task :run do
-  sh "ruby -I ruby/lib ruby/bin/segment " +
-     "rt0024_unmasked_tidy_rewrite_ADC.mhd " +
-     "rt0024_unmasked_tidy_rewrite_ADC_threshold_level_set.mhd " +
-     "rt0024_unmasked_tidy_rewrite_ADC_threshold.mhd " +
+task :run => [:make] do
+  sh "./Threshold " + 
+     "Rat24 " + 
+     "rt0024_unmasked_tidy_rewrite_ADC.mhd " + 
+     "rt0024_unmasked_tidy_rewrite_ADC_threshold_level_set.mhd " + 
+     "rt0024_unmasked_tidy_rewrite_ADC_threshold.mhd " + 
      "3 " + 
-     "49 " +
-     "70 " +
-     "1"
-     
+     "49 " + 
+     "70"
+       
   sh "say done"
 end
 
@@ -23,26 +23,27 @@ task :make do
   Dir.chdir('itk') { system("make") }
 end
 
-desc "Run refactored code and test output against original output"
-task :run_refactor do
-#   register_128(refactor_dir)
-#   Rake::Task[:test].invoke
-#   cp 'config/registration_parameters_128.yml', refactor_dir
+namespace :refactor do
+  desc "Run refactored code and test output against original output"
+  task :run do
+  #   register_128(refactor_dir)
+  #   Rake::Task[:test].invoke
+  #   cp 'config/registration_parameters_128.yml', refactor_dir
+  end
+  # 
+  desc "Test refactored output against original output"
+  task :test do
+  #   diff_output = `diff -r -x .DS_Store #{test_dir} #{refactor_dir}`
+  #   if $?.success?
+  #     `echo The refactoring worked\! | growlnotify Success\!`
+  #     puts "\nrefactoring successful!"
+  #     `say refactoring successful!`
+  #   else
+  #     `echo '#{diff_output}' | growlnotify The refactoring fucked something\.`
+  #     puts "\nDifferences:"
+  #     puts diff_output
+  #    `say refactoring failed`
+  #   end
+  end
 end
-# 
-desc "Test refactored output against original output"
-task :test do
-#   diff_output = `diff -r -x .DS_Store #{test_dir} #{refactor_dir}`
-#   if $?.success?
-#     `echo The refactoring worked\! | growlnotify Success\!`
-#     puts "\nrefactoring successful!"
-#     `say refactoring successful!`
-#   else
-#     `echo '#{diff_output}' | growlnotify The refactoring fucked something\.`
-#     puts "\nDifferences:"
-#     puts diff_output
-#    `say refactoring failed`
-#   end
-end
-
 # String to label results folders with: Time.now.utc.strftime("%Y%m%d%H%M%S")

@@ -53,7 +53,7 @@ int main( int argc, char *argv[] ) {
   else           { curvatureScaling = atof(argv[8]); }
   
   // Starts the clock
-  clock_t start = clock();  
+  clock_t start = clock();
   
   typedef   float           InternalPixelType;
   const     unsigned int    Dimension = 3;
