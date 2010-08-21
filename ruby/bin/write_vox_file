@@ -1,0 +1,25 @@
+require 'segmentation'
+include Segmentation::Dirs
+
+# parse inputs
+data_set = ARGV[0]
+mhd_name = ARGV[1]
+raw_name = File.basename(ARGV[1], ".mhd") + ".raw"
+mhd_path = File.join results_dir(data_set), mhd_name
+raw_path = File.join results_dir(data_set), raw_name
+vox_path = File.join results_dir(data_set), "voxels.vox"
+
+# parse mhd file
+mhd = Segmentation::MhdData.new mhd_path
+
+# write vox file
+File.open(vox_path, "w") do |vox|
+  # header
+  vox.puts mhd.dim_size.join(" ")
+  vox.puts mhd.element_spacing.join(" ")
+
+  # body
+  File.open(raw_path).each_byte do |value|
+    vox.puts value
+  end
+end
