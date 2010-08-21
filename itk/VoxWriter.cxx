@@ -1,25 +1,31 @@
-////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////
-// Martin J Bishop 
-// Computational Biology Group, University of Oxford 
-// 15th September 2008
-// 
-// Calculates radial vector from each element to surface
-////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////
-
 #include <iostream>
 #include <fstream>
-#include <sstream>
-#include <math.h>
-#include <algorithm>
-#include <list>
-#include <stdio.h>
-#include <stdlib.h>
-#include <cstdlib>
-#include "imaging.h"
 
 using namespace std;
+
+void loadImage(char* file, char* &img)
+{
+	ifstream::pos_type size;
+	ifstream image_file(file, ios::in|ios::binary|ios::ate);
+
+	if (image_file.is_open())
+	{
+		cout << "Reading " << file << "..." << flush;
+
+		size = image_file.tellg();
+		img = new char [size];
+		image_file.seekg (0, ios::beg);
+		image_file.read (img, size);
+		image_file.close();
+
+		cout << "Image file read into memory!" << endl;
+	}
+	else
+	{
+		cerr << "Can't Open " << file << "!" << endl;
+	}
+}
+
 
 int main( int argc, char *argv[] )
 {
