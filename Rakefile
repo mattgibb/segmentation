@@ -23,6 +23,13 @@ task :make do
   Dir.chdir('itk') { system("make") }
 end
 
+desc "Generate vox file from segmentation"
+task :vox do
+  sh "ruby -I ruby/lib ruby/bin/write_vox_file " +
+     "Rat24 " +
+     "rt0024_unmasked_tidy_rewrite_ADC_threshold_level_set.mhd"
+end
+
 namespace :refactor do
   desc "Run refactored code and test output against original output"
   task :run do
