@@ -1,5 +1,5 @@
 require 'segmentation'
-include Segmentation::Dirs
+include Segmentation::Paths
 
 # parse inputs
 data_set = ARGV[0]

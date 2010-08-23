@@ -1,0 +1,10 @@
+require 'segmentation'
+include Segmentation::Paths
+
+data_set = ARGV[0]
+
+# run tarantula and translate file to carp format
+system "ssh heart " +
+       "'/users/martb/Tarantula2.1/bin/linux/voxmesher " +
+        "imaging/segmentation/config/tara.conf " +
+        "8'"

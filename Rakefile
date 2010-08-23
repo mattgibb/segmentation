@@ -4,6 +4,11 @@ include FileUtils::Verbose
 
 task :default => [:make]
 
+desc "Compile itk code"
+task :make do
+  Dir.chdir('itk') { system("make") }
+end
+
 desc "Run segmentation"
 task :run => [:make] do
   sh "./Threshold " + 
@@ -18,16 +23,22 @@ task :run => [:make] do
   sh "say done"
 end
 
-desc "Compile itk code"
-task :make do
-  Dir.chdir('itk') { system("make") }
-end
-
 desc "Generate vox file from segmentation"
 task :vox do
   sh "ruby -I ruby/lib ruby/bin/write_vox_file " +
      "Rat24 " +
      "rt0024_unmasked_tidy_rewrite_ADC_threshold_level_set.mhd"
+end
+
+desc "Copy voxel file to heart server"
+task :upload_vox do
+  
+end
+
+desc "Mesh vox file on heart server and copy back the results"
+task :generate_mesh do
+  sh "ruby -I ruby/lib ruby/bin/generate_mesh " +
+     "Rat24"
 end
 
 namespace :refactor do
