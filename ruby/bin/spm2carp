@@ -1,0 +1,13 @@
+require 'segmentation'
+include Segmentation::Paths
+
+command = "/users/sten/CardioEngLib/Examples/spm2carp/spm2carp \
+           imaging/results/mesh \
+           mat1 \
+           0.1 0.1 0.1 \
+           && rm imaging/results/mesh.lon"
+
+# run remote spm2carp program
+system "ssh heart '#{command}'"
+
+puts "Don't forget to write your own spm2carp program"

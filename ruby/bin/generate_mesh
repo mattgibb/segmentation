@@ -1,10 +1,14 @@
 require 'segmentation'
 include Segmentation::Paths
 
-data_set = ARGV[0]
+command = "/users/martb/Tarantula2.1/bin/linux/voxmesher \
+           imaging/segmentation/config/tara.conf \
+           8"
 
 # run tarantula and translate file to carp format
-system "ssh heart " +
-       "'/users/martb/Tarantula2.1/bin/linux/voxmesher " +
-        "imaging/segmentation/config/tara.conf " +
-        "8'"
+system "ssh heart #{command}"
+
+puts "The only parameter in the tara.conf file which you may want
+to vary is the BASEH number. This must be a power of 2 
+(i.e. 2,4,8,16,32,64 etc). The smaller the number, the
+finer your mesh (i.e. more nodes/elements)."

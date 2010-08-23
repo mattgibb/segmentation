@@ -35,9 +35,15 @@ task :upload_vox do
   
 end
 
-desc "Mesh vox file on heart server and copy back the results"
+desc "Mesh vox file on heart server"
 task :generate_mesh do
   sh "ruby -I ruby/lib ruby/bin/generate_mesh " +
+     "Rat24"
+end
+
+desc "Convert spm file to carp format"
+task :spm2carp do
+  sh "ruby -I ruby/lib ruby/bin/spm2carp " +
      "Rat24"
 end
 
