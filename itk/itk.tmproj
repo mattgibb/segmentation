@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>documents</key>
+	<array>
+		<dict>
+			<key>filename</key>
+			<string>CMakeLists.txt</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>Dirs.hpp</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>Threshold.cxx</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>VoxWriter.cxx</string>
+			<key>selected</key>
+			<true/>
+		</dict>
+	</array>
+	<key>fileHierarchyDrawerWidth</key>
+	<integer>304</integer>
+	<key>metaData</key>
+	<dict/>
+	<key>showFileHierarchyDrawer</key>
+	<true/>
+	<key>windowFrame</key>
+	<string>{{31, 4}, {752, 1174}}</string>
+</dict>
+</plist>
