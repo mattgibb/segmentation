@@ -1,5 +1,5 @@
 module Segmentation
-  class MhdData
+  class MhdHeader
     def initialize(path)
       @lines = File.readlines path
     end

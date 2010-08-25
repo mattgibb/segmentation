@@ -1,2 +1,3 @@
 require 'segmentation/paths'
-require 'segmentation/mhd_data'
+require 'segmentation/mhd_header'
+require 'segmentation/mesh_data'

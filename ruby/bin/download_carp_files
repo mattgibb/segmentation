@@ -1,0 +1,6 @@
+require 'segmentation'
+include Segmentation::Paths
+
+data_set = ARGV[0]
+
+system "scp heart:imaging/results/mesh.{elem,pts} #{results_dir(data_set)}"

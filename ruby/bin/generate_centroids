@@ -1,0 +1,37 @@
+require 'segmentation'
+include Segmentation::Paths
+
+data_set = ARGV[0]
+carp_basename = File.join results_dir(data_set), 'mesh'
+
+# Law of Demeter!
+mesh_data = Segmentation::CarpReader.new(carp_basename).mesh_data
+
+puts "mesh_data.centroids.first(3):"
+mesh_data.centroids.first(3).display; puts
+puts
+puts
+
+puts "mesh_data.centroids.first(3):"
+mesh_data.centroids.first(3).display; puts
+puts
+puts
+
+puts "mesh_data.points.first(3):"
+mesh_data.points.first(3).display
+puts
+puts
+
+puts "mesh_data.elements.first(3):"
+mesh_data.elements.first(3).display
+puts
+puts
+
+exit
+
+# write element centroids to file
+File.open("#{carp_basename}.centroids", "w") do |f|
+  mesh_data.centroids.each do |centroid|
+    f.puts centroid.join " "
+  end
+end

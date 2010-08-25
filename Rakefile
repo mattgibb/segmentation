@@ -47,6 +47,12 @@ task :spm2carp do
      "Rat24"
 end
 
+desc "Generate centroid file"
+task :generate_centroids do
+  sh "ruby -I ruby/lib ruby/bin/generate_centroids " +
+     "Rat24"
+end
+
 namespace :refactor do
   desc "Run refactored code and test output against original output"
   task :run do

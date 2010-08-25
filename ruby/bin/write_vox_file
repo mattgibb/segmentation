@@ -10,7 +10,7 @@ raw_path = File.join results_dir(data_set), raw_name
 vox_path = File.join results_dir(data_set), "voxels.vox"
 
 # parse mhd file
-mhd = Segmentation::MhdData.new mhd_path
+mhd = Segmentation::MhdHeader.new mhd_path
 
 # write vox file
 File.open(vox_path, "w") do |vox|
