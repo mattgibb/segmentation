@@ -4,34 +4,40 @@ include Segmentation::Paths
 data_set = ARGV[0]
 carp_basename = File.join results_dir(data_set), 'mesh'
 
-# Law of Demeter!
-mesh_data = Segmentation::CarpReader.new(carp_basename).mesh_data
+pts_filename       = "#{carp_basename}.pts"
+elem_filename      = "#{carp_basename}.elem"
+centroids_filename = "#{carp_basename}.centroids"
 
-puts "mesh_data.centroids.first(3):"
-mesh_data.centroids.first(3).display; puts
-puts
-puts
+# read points
+print "Extracting points..."
+points = File.readlines(pts_filename)[1..-1].map do |line|
+  line.split.map &:to_f
+end
+puts "done"
 
-puts "mesh_data.centroids.first(3):"
-mesh_data.centroids.first(3).display; puts
-puts
-puts
+# read elements
+print "Extracting elements..."
+elements = File.readlines(elem_filename)[1..-1].map do |line|
+  line.split[1..4].map &:to_i
+end
+puts "done"
 
-puts "mesh_data.points.first(3):"
-mesh_data.points.first(3).display
-puts
-puts
-
-puts "mesh_data.elements.first(3):"
-mesh_data.elements.first(3).display
-puts
-puts
-
-exit
-
-# write element centroids to file
-File.open("#{carp_basename}.centroids", "w") do |f|
-  mesh_data.centroids.each do |centroid|
-    f.puts centroid.join " "
+# calculate centroids
+print "Calculating centroids..."
+centroids = elements.map do |element|
+  centroid = element.inject([0,0,0]) do |memo, point_index|
+    memo.each_index do |i|
+      memo[i] += points[point_index][i] / 4
+    end
   end
 end
+puts "done"
+
+# write element centroids to file
+print "Writing centroids..."
+File.open(centroids_filename, "w") do |centroids_file|
+  centroids.each do |centroid|
+    centroids_file.puts centroid.join " "
+  end
+end
+puts "done"
