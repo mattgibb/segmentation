@@ -22,7 +22,7 @@ elseif(ndims(img) == 3)
 elseif(ndims(img)==4)
     fprintf(fid, 'DimSize = %d %d %d %d\n', size(img,1), size(img,2), size(img,3), size(img,4));
     fprintf(fid, 'ElementSpacing = %1.4f %1.4f %1.4f %1.4f\n', resolution(1), resolution(2), resolution(3), resolution(4));
-     
+    
 end
 
 % data type
