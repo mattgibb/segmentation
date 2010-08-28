@@ -36,6 +36,7 @@ puts "done"
 # write element centroids to file
 print "Writing centroids..."
 File.open(centroids_filename, "w") do |centroids_file|
+  centroids_file.puts centroids.length
   centroids.each do |centroid|
     centroids_file.puts centroid.join " "
   end
