@@ -10,7 +10,7 @@ task :make do
 end
 
 desc "Run segmentation"
-task :run => [:make] do
+task :segment => [:make] do
   sh "./Threshold " + 
      "Rat24 " + 
      "rt0024_unmasked_tidy_rewrite_ADC.mhd " + 
@@ -24,7 +24,7 @@ task :run => [:make] do
 end
 
 desc "Generate vox file from segmentation"
-task :vox do
+task :generate_vox do
   sh "ruby -I ruby/lib ruby/bin/write_vox_file " +
      "Rat24 " +
      "rt0024_unmasked_tidy_rewrite_ADC_threshold_level_set.mhd"
