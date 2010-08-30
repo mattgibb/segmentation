@@ -32,7 +32,7 @@ public:
     return ProjectRootDir() + "results/" + DataSet + "/segmentation/";
   }
   
-  static void SetDataSet(const string& _DataSet) {
+  static void SetDataSet(string _DataSet) {
     DataSet = _DataSet;
   }
 };

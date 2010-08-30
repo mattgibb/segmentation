@@ -29,7 +29,7 @@ void loadImage(char* file, char* &img)
 
 int main( int argc, char *argv[] )
 {
-
+  
 	if (argc < 8)
 	{
 		std::cerr << "Missing Parameters " << std::endl;
@@ -52,14 +52,14 @@ int main( int argc, char *argv[] )
 	int sizex = atoi(argv[2]);
 	int sizey = atoi(argv[3]);
 	int sizez = atoi(argv[4]);
-
+  
 	// Defines physical resolution of image
 	double x_res = atof(argv[5]);
 	double y_res = atof(argv[6]);
 	double z_res = atof(argv[7]);	
-
+  
 	cout << "SIZE = " << sizex*sizey*sizez << "\n";
-
+  
 	// Write-out data to vox file
 	ofstream output(argv[8]);
 	output << sizex << " " << sizey << " " << sizez << "\n";

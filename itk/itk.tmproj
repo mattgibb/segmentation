@@ -7,10 +7,22 @@
 		<dict>
 			<key>filename</key>
 			<string>CMakeLists.txt</string>
+			<key>lastUsed</key>
+			<date>2010-08-29T11:09:53Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Dirs.hpp</string>
+			<key>lastUsed</key>
+			<date>2010-08-29T12:50:14Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>../../../../Code/imaging/segmentation/itk/ExtractVectors.cxx</string>
+			<key>lastUsed</key>
+			<date>2010-08-29T13:02:02Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -19,8 +31,8 @@
 		<dict>
 			<key>filename</key>
 			<string>VoxWriter.cxx</string>
-			<key>selected</key>
-			<true/>
+			<key>lastUsed</key>
+			<date>2010-08-25T23:08:39Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -30,6 +42,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{31, 4}, {752, 1174}}</string>
+	<string>{{-2, 455}, {959, 723}}</string>
 </dict>
 </plist>

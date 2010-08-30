@@ -53,6 +53,15 @@ task :generate_centroids do
      "Rat24"
 end
 
+desc "Extract primary Eigenvector to lon file"
+task :extract_vectors => [:make] do
+  sh "itk/ExtractVectors " +
+     "Rat24 " + 
+     "rt0024_unmasked_tidy_rewrite_EVECS_1 " +
+     "mesh.centroids " +
+     "mesh.lon "
+end
+
 namespace :refactor do
   desc "Run refactored code and test output against original output"
   task :run do
