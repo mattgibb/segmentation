@@ -62,6 +62,12 @@ task :extract_vectors => [:make] do
      "mesh.lon "
 end
 
+desc "Convert lon file to cardioviz format"
+task :carp2cardioviz do
+  sh "ruby -I ruby/lib ruby/bin/carp2cardioviz " +
+     "Rat24"
+end
+
 namespace :refactor do
   desc "Run refactored code and test output against original output"
   task :run do

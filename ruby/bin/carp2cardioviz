@@ -1,0 +1,24 @@
+require 'segmentation'
+include Segmentation::Paths
+
+data_set = ARGV[0]
+vector_basename = File.join results_dir(data_set), 'mesh'
+
+lon_filename       = "#{vector_basename}.lon"
+cardioviz_filename = "#{vector_basename}.cardioviz"
+
+File.open lon_filename do |lon_file|
+  File.open cardioviz_filename, "w" do |cardioviz_file|
+    # set up writer
+    number_of_elements = lon_file.gets.to_i
+    puts "Number of elements: #{number_of_elements}"
+    writer = CardiovizWriter.new cardioviz_file, number_of_elements, File.basename(cardioviz_filename)
+    writer.write_header
+    
+    # write elements
+    until lon_file.eof?
+      writer.write_element(lon_file.gets)
+    end
+    
+  end
+end
