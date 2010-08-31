@@ -1,9 +1,10 @@
-% In the binary files, the complete variables are written one at a time:
-% e.g. the _EVECS file, the e1x array, containing the x component of the
-% primary e-evector for the entire dataset is written first (256 x 256 x
-% 256), then  e1y, then e1z.
-
-function translate_mri_data(filename)
+function translate_mri_data(filename, scale)
+    % default that data is spread across the range of the data type
+    % e.g. 0-255 for unsigned char
+    if nargin < 2
+        scale = true;
+    end
+    
     % open file
     fid  = fopen(filename,'r');
     frewind(fid);
@@ -25,7 +26,12 @@ function translate_mri_data(filename)
         end
     end
     
-    img = scale_data(img, 'char');
+    if scale
+        disp('scaling image...');
+        img = scale_data(img, 'char');
+    else
+        disp('skipping image scaling...');
+    end
     
     if ndims(img) == 3
         write_mhd_files(filename, img, resolution, 'char');
