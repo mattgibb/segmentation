@@ -69,8 +69,8 @@ int main( int argc, char *argv[] ) {
   thresholder->SetLowerThreshold( -1000.0 );
   thresholder->SetUpperThreshold(     0.0 );
   
-  thresholder->SetOutsideValue(  0  );
-  thresholder->SetInsideValue(  255 );
+  thresholder->SetOutsideValue( 255 );
+  thresholder->SetInsideValue( 0 );
   
   typedef  itk::ImageFileReader< InternalImageType > InputReaderType;
   typedef  itk::ImageFileReader< SeedImageType > SeedReaderType;
