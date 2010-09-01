@@ -21,12 +21,14 @@
 			<string>../../../../Code/imaging/segmentation/itk/ExtractVectors.cxx</string>
 			<key>lastUsed</key>
 			<date>2010-08-29T13:02:02Z</date>
-			<key>selected</key>
-			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Threshold.cxx</string>
+			<key>lastUsed</key>
+			<date>2010-08-31T22:31:06Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -42,6 +44,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{-2, 455}, {959, 723}}</string>
+	<string>{{0, 455}, {959, 723}}</string>
 </dict>
 </plist>
