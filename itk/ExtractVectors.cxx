@@ -36,7 +36,7 @@ int main( int argc, char *argv[] ) {
   
   // Open files for reading and writing
   // Open vector images
-  typedef unsigned char PixelType;
+  typedef float PixelType;
   typedef itk::Image< PixelType, 3 > VolumeType;
   typedef itk::ImageFileReader< VolumeType > ReaderType;
   
@@ -44,9 +44,9 @@ int main( int argc, char *argv[] ) {
   ReaderType::Pointer yReader = ReaderType::New();
   ReaderType::Pointer zReader = ReaderType::New();
   
-  xReader->SetFileName( vectorImageBasename + "1.mhd" );    
-  yReader->SetFileName( vectorImageBasename + "2.mhd" );    
-  zReader->SetFileName( vectorImageBasename + "3.mhd" );    
+  xReader->SetFileName( vectorImageBasename + "1.mhd" );
+  yReader->SetFileName( vectorImageBasename + "2.mhd" );
+  zReader->SetFileName( vectorImageBasename + "3.mhd" );
   
   xReader->Update();
   yReader->Update();
