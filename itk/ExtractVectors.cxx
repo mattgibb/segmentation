@@ -14,12 +14,12 @@ using namespace std;
 void checkUsage(int argc, char *argv[]) {
 	if (argc < 5)
 	{
-		std::cerr << "Missing Parameters " << std::endl;
-    std::cerr << "Usage: " << argv[0] << " ";
-    std::cerr << "dataSet ";
-    std::cerr << "vectorImageBasename ";
-		std::cerr << "centroidsFilename ";
-		std::cerr << "lonFilename ";
+		cerr << "Missing Parameters " << endl;
+    cerr << "Usage: " << argv[0] << " ";
+    cerr << "dataSet ";
+    cerr << "vectorImageBasename ";
+		cerr << "centroidsFilename ";
+		cerr << "lonFilename " << endl;
 		exit(EXIT_FAILURE);
 	}
 }

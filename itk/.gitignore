@@ -5,3 +5,4 @@ Makefile
 Threshold
 VoxWriter
 ExtractVectors
+GenerateCentroids

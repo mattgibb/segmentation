@@ -5,7 +5,7 @@ command = "/users/martb/Tarantula2.1/bin/linux/voxmesher \
            imaging/segmentation/config/tara.conf \
            8"
 
-# run tarantula and translate file to carp format
+# run tarantula
 system "ssh heart #{command}"
 
 puts "The only parameter in the tara.conf file which you may want

@@ -32,7 +32,7 @@ end
 
 desc "Copy voxel file to heart server"
 task :upload_vox do
-  
+  sh "scp results/Rat24/segmentation/voxels.vox heart:imaging/results/"
 end
 
 desc "Mesh vox file on heart server"
@@ -47,9 +47,14 @@ task :spm2carp do
      "Rat24"
 end
 
+desc "Copy pts and elem files from heart server"
+task :download_carp do
+  sh "scp heart:imaging/results/mesh.{elem,pts} results/Rat24/segmentation/"
+end
+
 desc "Generate centroid file"
-task :generate_centroids do
-  sh "ruby -I ruby/lib ruby/bin/generate_centroids " +
+task :generate_centroids => [:make] do
+  sh "itk/GenerateCentroids " +
      "Rat24"
 end
 

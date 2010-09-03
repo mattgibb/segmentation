@@ -26,4 +26,7 @@ TARGET_LINK_LIBRARIES(VoxWriter)
 ADD_EXECUTABLE(ExtractVectors ExtractVectors.cxx)
 TARGET_LINK_LIBRARIES(ExtractVectors ITKCommon ITKBasicFilters ITKIO)
 
+ADD_EXECUTABLE(GenerateCentroids GenerateCentroids.cxx)
+TARGET_LINK_LIBRARIES(GenerateCentroids)
+
 # GET_TARGET_PROPERTY(LINK_FLAGS REGISTER LINK_FLAGS)

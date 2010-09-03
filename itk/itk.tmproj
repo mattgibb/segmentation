@@ -8,27 +8,33 @@
 			<key>filename</key>
 			<string>CMakeLists.txt</string>
 			<key>lastUsed</key>
-			<date>2010-08-29T11:09:53Z</date>
+			<date>2010-09-02T21:55:58Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Dirs.hpp</string>
 			<key>lastUsed</key>
-			<date>2010-08-29T12:50:14Z</date>
+			<date>2010-09-02T22:06:30Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>../../../../Code/imaging/segmentation/itk/GenerateCentroids.cxx</string>
+			<key>lastUsed</key>
+			<date>2010-09-02T22:16:06Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../Code/imaging/segmentation/itk/ExtractVectors.cxx</string>
 			<key>lastUsed</key>
-			<date>2010-08-29T13:02:02Z</date>
+			<date>2010-09-02T22:16:07Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>Threshold.cxx</string>
 			<key>lastUsed</key>
-			<date>2010-08-31T22:31:06Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2010-09-01T10:33:02Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
