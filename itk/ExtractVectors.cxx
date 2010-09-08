@@ -48,9 +48,11 @@ int main( int argc, char *argv[] ) {
   yReader->SetFileName( vectorImageBasename + "2.mhd" );
   zReader->SetFileName( vectorImageBasename + "3.mhd" );
   
+  cout << "Reading files..." << flush;
   xReader->Update();
   yReader->Update();
   zReader->Update();
+  cout << "done." << endl;
   
   // open mesh.centroids
   ifstream centroidsFile( centroidsFilename.c_str() );

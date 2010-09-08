@@ -26,7 +26,7 @@
 			<key>filename</key>
 			<string>../../../../Code/imaging/segmentation/itk/ExtractVectors.cxx</string>
 			<key>lastUsed</key>
-			<date>2010-09-03T11:25:01Z</date>
+			<date>2010-09-06T08:55:50Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
@@ -50,6 +50,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{0, 455}, {959, 723}}</string>
+	<string>{{0, 4}, {1261, 1174}}</string>
 </dict>
 </plist>

@@ -1,10 +1,12 @@
 require 'segmentation'
 include Segmentation::Paths
 
+
+# scaled to 100 micron MRI resolution
 command = "/users/sten/CardioEngLib/Examples/spm2carp/spm2carp \
            imaging/results/mesh \
            mat1 \
-           0.1 0.1 0.1 \
+           0.1016 0.1016 0.1094 \
            && rm imaging/results/mesh.lon"
 
 # run remote spm2carp program
