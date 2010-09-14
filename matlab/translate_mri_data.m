@@ -1,4 +1,4 @@
-function translate_mri_data(filename, scale, data_type)
+function translate_mri_data(filename, scale, output_data_type)
     % default that data is spread across the range of the data type
     % e.g. 0-255 for unsigned char
     if nargin < 2
@@ -7,7 +7,7 @@ function translate_mri_data(filename, scale, data_type)
     
     % output data type
     if nargin < 3
-        data_type = 'char';
+        output_data_type = 'char';
     end
     
     % open file
@@ -39,11 +39,11 @@ function translate_mri_data(filename, scale, data_type)
     end
     
     if ndims(img) == 3
-        write_mhd_files(filename, img, resolution, data_type);
+        write_mhd_files(filename, img, resolution, output_data_type);
     elseif ndims(img) == 4
         for i = 1:size(img,4)
             filename_i = strcat(filename, num2str(i));
-            write_mhd_files(filename_i, img(:,:,:,i), resolution, data_type);
+            write_mhd_files(filename_i, img(:,:,:,i), resolution, output_data_type);
         end
     end
 end

@@ -8,7 +8,7 @@
 			<key>filename</key>
 			<string>CMakeLists.txt</string>
 			<key>lastUsed</key>
-			<date>2010-09-02T21:55:58Z</date>
+			<date>2010-09-10T11:06:14Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -20,13 +20,13 @@
 			<key>filename</key>
 			<string>../../../../Code/imaging/segmentation/itk/GenerateCentroids.cxx</string>
 			<key>lastUsed</key>
-			<date>2010-09-03T11:25:00Z</date>
+			<date>2010-09-08T16:58:43Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../Code/imaging/segmentation/itk/ExtractVectors.cxx</string>
 			<key>lastUsed</key>
-			<date>2010-09-06T08:55:50Z</date>
+			<date>2010-09-10T17:14:21Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
@@ -50,6 +50,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{0, 4}, {1261, 1174}}</string>
+	<string>{{67, 4}, {947, 1174}}</string>
 </dict>
 </plist>
