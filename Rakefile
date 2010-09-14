@@ -49,7 +49,9 @@ end
 
 desc "Copy pts and elem files from heart server"
 task :download_carp do
-  sh "scp heart:imaging/results/mesh.{elem,pts} results/Rat24/segmentation/"
+  # -a archive, -z compressed, -c skip based on checksum, -v verbose,
+  # -P partial progress, -h human readable
+  sh "rsync -azcvPh heart:imaging/results/mesh.{elem,pts} results/Rat24/segmentation/"
 end
 
 desc "Generate centroid file"
