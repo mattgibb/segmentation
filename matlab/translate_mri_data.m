@@ -10,55 +10,26 @@ function translate_mri_data(filename, scale, output_data_type)
         output_data_type = 'char';
     end
     
-    % open file
-    fid  = fopen(filename,'r');
-    frewind(fid);
-    
-    % read header
-    ncols   = fread(fid, 1, 'int16');
-    nrows   = fread(fid, 1, 'int16');
-    nslices = fread(fid, 1, 'int16');
-    orientation_code = fread(fid, 1, 'int16');
-    resolution = fread(fid, [1 3], 'float32');
-    
-    % check file size is consistent and calculate data dimension
-    ncoords = data_dimension(filename, [ncols, nrows, nslices]);
-    
-    % read binary data
-    for icoord = 1:ncoords
-        for islice = 1:nslices
-            img(:,:,islice,icoord) = fread(fid, [ncols, nrows],'float32');
-        end
-    end
+    data = read_mri_data(filename);
     
     if scale
         disp('scaling image...');
-        img = scale_data(img, 'char');
+        data.image = scale_data(data.image, output_data_type);
     else
         disp('skipping image scaling...');
     end
     
-    if ndims(img) == 3
-        write_mhd_files(filename, img, resolution, output_data_type);
-    elseif ndims(img) == 4
-        for i = 1:size(img,4)
-            filename_i = strcat(filename, num2str(i));
-            write_mhd_files(filename_i, img(:,:,:,i), resolution, output_data_type);
-        end
-    end
+    write_mri_data(data, output_data_type);
 end
 
-function dimension = data_dimension(filename, npixels)
-    file_info = dir(filename);
-    file_size = file_info.bytes;
-    
-    scalar_size = prod(npixels) * 4; % number of pixels * 4 bytes in a float
-    
-    dimension = floor( file_size/scalar_size );
-    header_size = mod(file_size,scalar_size);
-    
-    assert(header_size == 20,... % 4 int16s and 3 float32s
-           'Header size doesn''t equal 20.'...
-        );
+function write_mri_data(data, output_data_type)
+    if ndims(data.image) == 3
+        write_mhd_files(filename, data.image, data.resolution, output_data_type);
+    elseif ndims(data.image) == 4
+        for i = 1:size(data.image,4)
+            filename_i = strcat(filename, num2str(i));
+            write_mhd_files(filename_i, data.image(:,:,:,i), resolution, output_data_type);
+        end
+    end
     
 end
