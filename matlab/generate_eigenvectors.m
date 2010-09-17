@@ -26,14 +26,14 @@ function generate_eigenvectors(tensor_filename)
                 tensor = tensors(:,:,col,row,slice);
                 [vectors,values] = eig(tensor);
                 
+                % turn eigenvalue matrix into column vector
+                values = diag(values);
+                
                 % can't have negative diffusion coefficients
                 assert(all(abs(values) == values), 'Matrix has negative eigenvalues');
                 
                 % can't have NaNs in vectors
                 assert(~any(isnan(vectors(:))), 'Vectors cannot contain NaNs');
-                
-                % turn eigenvalue matrix into column vector
-                values = diag(values);
                 
                 % sort eigenvectors in descending order of value magnitude
                 [sorted_values,indeces] = sort(values);
