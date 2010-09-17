@@ -30,7 +30,7 @@ function generate_eigenvectors(tensor_filename)
                 assert(all(abs(values) == values), 'Matrix has negative eigenvalues');
                 
                 % can't have NaNs in vectors
-                assert(~any(isnan(vectors(:)), 'Vectors cannot contain NaNs');
+                assert(~any(isnan(vectors(:))), 'Vectors cannot contain NaNs');
                 
                 % turn eigenvalue matrix into column vector
                 values = diag(values);
@@ -54,7 +54,7 @@ function generate_eigenvectors(tensor_filename)
                                  num2str(coordinate));
             write_mhd_files(filename_ij,...
                             tensors(vector,coordinate,:,:,:),...
-                            data.resolution,
+                            data.resolution,...
                             'float32');
         end
     end
