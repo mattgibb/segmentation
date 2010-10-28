@@ -10,8 +10,6 @@ FIND_LIBRARY(YAML_LIBRARY
   PATHS /usr/local/lib $ENV{HOME}/lib
   )
 
-# MESSAGE( STATUS "HOME: $ENV{HOME}" )
-  
 INCLUDE(${ITK_USE_FILE})
 # INCLUDE( CMakePrintSystemInformation )
 
@@ -29,4 +27,5 @@ TARGET_LINK_LIBRARIES(ExtractVectors ITKCommon ITKBasicFilters ITKIO)
 ADD_EXECUTABLE(GenerateCentroids GenerateCentroids.cxx)
 TARGET_LINK_LIBRARIES(GenerateCentroids)
 
-# GET_TARGET_PROPERTY(LINK_FLAGS REGISTER LINK_FLAGS)
+ADD_EXECUTABLE(ConvertImageFormat ConvertImageFormat.cxx)
+TARGET_LINK_LIBRARIES(ConvertImageFormat)
