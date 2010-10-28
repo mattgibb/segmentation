@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 2.6)
 
 PROJECT(SEGMENTATION)
 
+# Find Boost and add include dirs
+FIND_PACKAGE(Boost COMPONENTS program_options REQUIRED)
+INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
+
 # Find ITK.
 FIND_PACKAGE(ITK REQUIRED)
 
@@ -28,4 +32,4 @@ ADD_EXECUTABLE(GenerateCentroids GenerateCentroids.cxx)
 TARGET_LINK_LIBRARIES(GenerateCentroids)
 
 ADD_EXECUTABLE(ConvertImageFormat ConvertImageFormat.cxx)
-TARGET_LINK_LIBRARIES(ConvertImageFormat)
+TARGET_LINK_LIBRARIES(ConvertImageFormat ${Boost_LIBRARIES} ITKCommon)
