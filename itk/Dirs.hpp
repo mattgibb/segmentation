@@ -1,5 +1,5 @@
-#ifndef _IMAGING_HPP_
-#define _IMAGING_HPP_
+#ifndef _DIRS_HPP_
+#define _DIRS_HPP_
 
 using namespace std;
 
