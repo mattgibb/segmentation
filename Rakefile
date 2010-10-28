@@ -37,8 +37,9 @@ end
 
 desc "Mesh vox file on heart server"
 task :generate_mesh do
+  # voxmesher conf_file number_of_processors
   command = "/users/martb/Tarantula2.1/bin/linux/voxmesher \
-             imaging/segmentation/config/tara.conf \
+             imaging/segmentation/current/config/tara.conf \
              8"
 
   # run tarantula
