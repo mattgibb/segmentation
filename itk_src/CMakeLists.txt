@@ -32,4 +32,4 @@ ADD_EXECUTABLE(GenerateCentroids GenerateCentroids.cxx)
 TARGET_LINK_LIBRARIES(GenerateCentroids)
 
 ADD_EXECUTABLE(ConvertImageFormat ConvertImageFormat.cxx)
-TARGET_LINK_LIBRARIES(ConvertImageFormat ${Boost_LIBRARIES} ITKCommon)
+TARGET_LINK_LIBRARIES(ConvertImageFormat ${Boost_LIBRARIES} ITKCommon ITKIO)
