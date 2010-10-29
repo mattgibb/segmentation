@@ -35,12 +35,12 @@ int main(int argc, char * argv[])
   
   
   // ITK STUFF
-  typedef short      PixelType;
-  const   unsigned int        Dimension = 3;
-  typedef itk::Image< PixelType, Dimension >    ImageType;
+  typedef float PixelType;
+  const unsigned int Dimension = 3;
+  typedef itk::Image< PixelType, Dimension > ImageType;
 
-  typedef itk::ImageFileReader< ImageType >  ReaderType;
-  typedef itk::ImageFileWriter< ImageType >  WriterType;
+  typedef itk::ImageFileReader< ImageType > ReaderType;
+  typedef itk::ImageFileWriter< ImageType > WriterType;
 
   ReaderType::Pointer reader = ReaderType::New();
   WriterType::Pointer writer = WriterType::New();
