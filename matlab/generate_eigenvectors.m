@@ -30,7 +30,7 @@ function generate_eigenvectors(tensor_filename)
                 values = diag(values);
                 
                 % can't have negative diffusion coefficients
-                assert(all(abs(values) == values), 'Matrix has negative eigenvalues');
+                assert(all(abs(values) == values), 'Matrix has negative or NaN eigenvalues');
                 
                 % can't have NaNs in vectors
                 assert(~any(isnan(vectors(:))), 'Vectors cannot contain NaNs');
@@ -50,8 +50,8 @@ function generate_eigenvectors(tensor_filename)
     for vector = 1:3
         for coordinate = 1:3
             filename_ij = strcat(tensor_filename,...
-                                 num2str(vector),...
-                                 num2str(coordinate));
+                                 num2str(coordinate),...
+                                 num2str(vector));
             write_mhd_files(filename_ij,...
                             tensors(vector,coordinate,:,:,:),...
                             data.resolution,...
