@@ -29,11 +29,14 @@ function generate_eigenvectors(tensor_filename)
                 % turn eigenvalue matrix into column vector
                 values = diag(values);
                 
+                % can't have NaN diffusion coefficients
+                assert(~any(isnan(values)), 'Matrix has negative or NaN eigenvalues');
+                
                 % can't have negative diffusion coefficients
-                assert(all(abs(values) == values), 'Matrix has negative or NaN eigenvalues');
+                assert(all(values > 0), 'Matrix has non-positive eigenvalues');
                 
                 % can't have NaNs in vectors
-                assert(~any(isnan(vectors(:))), 'Vectors cannot contain NaNs');
+                assert(~any(isnan(vectors(:))), 'Vectors contain NaNs');
                 
                 % sort eigenvectors in descending order of value magnitude
                 [sorted_values,indeces] = sort(values);
