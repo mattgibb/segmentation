@@ -6,7 +6,7 @@ task :default => [:make]
 
 desc "Compile itk code"
 task :make do
-  Dir.chdir('itk') { system("make") }
+  Dir.chdir('itk_build') { system("make") }
 end
 
 desc "Run segmentation"
@@ -66,7 +66,7 @@ end
 
 desc "Generate centroid file"
 task :generate_centroids => [:make] do
-  sh "itk/GenerateCentroids " +
+  sh "itk_build/GenerateCentroids " +
      "Rat24"
 end
 
