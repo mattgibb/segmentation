@@ -11,7 +11,7 @@ function data = read_mri_data(filename)
     data.nrows   = fread(fid, 1, 'int16');
     data.nslices = fread(fid, 1, 'int16');
     data.orientation_code = fread(fid, 1, 'int16');
-    data.resolution = fread(fid, [1 3], 'float32');
+    data.resolution = fread(fid, [1 3], 'float32', 'a');
     
     % check file size is consistent and calculate data dimension
     data.ncoords = data_dimension(filename, [data.ncols, data.nrows, data.nslices]);
@@ -19,7 +19,7 @@ function data = read_mri_data(filename)
     % read binary data
     for icoord = 1:data.ncoords
         for islice = 1:data.nslices
-            data.image(:,:,islice,icoord) = fread(fid, [data.ncols, data.nrows],'float32');
+            data.image(:,:,islice,icoord) = fread(fid, [data.ncols, data.nrows],'float32', 'a');
         end
     end
 end
