@@ -57,11 +57,28 @@ task :spm2carp do
      "Rat24"
 end
 
+desc "copy mesh files from heart to Martin's computer"
+task :transfer_mesh do
+  system "ssh martin 'scp heart:imaging/results/mesh.* imaging/results'"
+end
+
+desc "Extract tissue mesh from tissue-bath mesh"
+task :extract_tissue do
+  command = "'cd imaging/results; " +
+            "/home/scratch/programmes/CARP/CARP_local/bin/carpm.linux.petsc " + # carp executable
+            "-experiment 3 " + # dont bother running simulation, just output tissue mesh
+            "-meshname /users/matg/imaging/results/mesh " + # input mesh name
+            "-gridout_i 2 " + # output all mesh files
+            "-simID .'" # output directory
+  
+  system "ssh martin #{command}"
+end
+
 desc "Copy pts and elem files from heart server"
 task :download_carp do
   # -a archive, -z compressed, -c skip based on checksum, -v verbose,
   # -P partial progress, -h human readable
-  sh "rsync -azcvPh heart:imaging/results/mesh.{elem,pts} results/Rat24/segmentation/"
+  sh "rsync -azcvPh martin:imaging/results/* results/Rat24/segmentation/"
 end
 
 desc "Generate centroid file"
