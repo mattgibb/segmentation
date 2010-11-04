@@ -6,8 +6,7 @@ include Segmentation::Paths
 command = "/users/sten/CardioEngLib/Examples/spm2carp/spm2carp \
            imaging/results/mesh \
            mat1 \
-           0.1016 0.1016 0.1094 \
-           && rm imaging/results/mesh.lon"
+           0.1016 0.1016 0.1094"
 
 # run remote spm2carp program
 system "ssh heart '#{command}'"
