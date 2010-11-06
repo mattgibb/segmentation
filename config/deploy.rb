@@ -13,5 +13,5 @@ role :servers, "heart"
 
 desc "Compile all the itk programs on the servers"
 task :compile do
-  run "cd #{deploy_to}/itk_build; make"
+  run "cd #{deploy_to}/current/itk_build; make"
 end
