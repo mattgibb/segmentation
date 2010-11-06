@@ -11,7 +11,7 @@ end
 
 desc "Run segmentation"
 task :segment => [:make] do
-  sh "itk/Threshold " + 
+  sh "itk_build/Threshold " + 
      "Rat24 " + 
      "rt0024_unmasked_tidy_rewrite_ADC.mhd " + 
      "rt0024_unmasked_tidy_rewrite_ADC_threshold_level_set.mhd " + 
@@ -89,7 +89,7 @@ end
 
 desc "Extract primary Eigenvector to lon file"
 task :extract_vectors => [:make] do
-  sh "itk/ExtractVectors " +
+  sh "itk_build/ExtractVectors " +
      "Rat24 " + 
      "rt0024_unmasked_tidy_rewrite_EVECS_1 " +
      "mesh.centroids " +
