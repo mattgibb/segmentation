@@ -34,10 +34,10 @@ int main( int argc, char *argv[] )
 	{
 		std::cerr << "Missing Parameters " << std::endl;
 		std::cerr << "Usage: " << argv[0] << std::endl;
-		std::cerr << " Image Filename " << std::endl;
+		std::cerr << " image_filename " << std::endl;
 		std::cerr << " x_dim y_dim z_dim " << std::endl;
 		std::cerr << " x_res y_res z_res " << std::endl;
-		std::cerr << " Output Filename " << std::endl;
+		std::cerr << " output_filename " << std::endl;
 		return 1;
 	}
 
@@ -66,9 +66,7 @@ int main( int argc, char *argv[] )
 	output << x_res << " " << y_res << " " << z_res << "\n";
 	for(int i=0;i<sizex*sizey*sizez;i++)
 	{
-		//cout << i << "\n";
-		t = img[i];
-		output << t << "\n"; 
+		output << img[i] << "\n"; 
 	}
 
 	output.close();
