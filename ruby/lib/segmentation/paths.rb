@@ -4,7 +4,7 @@ module Segmentation
     IMAGES_DIR = File.join(PROJECT_ROOT_DIR, "images/")
     CONFIG_DIR = File.join(PROJECT_ROOT_DIR, "config/")
     RESULTS_DIR = File.join(PROJECT_ROOT_DIR, "results/")
-    ITK_DIR = File.join(PROJECT_ROOT_DIR, "itk/")
+    ITK_DIR = File.join(PROJECT_ROOT_DIR, "itk_build/")
     
     def itk_program(name)
       File.join(ITK_DIR, name)

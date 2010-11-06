@@ -13,13 +13,15 @@ vox_path = File.join results_dir(data_set), "voxels.vox"
 mhd = Segmentation::MhdHeader.new mhd_path
 
 # write vox file
-File.open(vox_path, "w") do |vox|
-  # header
-  vox.puts mhd.dim_size.join(" ")
-  vox.puts mhd.element_spacing.join(" ")
+system  "#{itk_program('VoxWriter')} #{raw_path} #{mhd.dim_size.join(" ")} #{mhd.element_spacing.join(" ")} #{vox_path}"
 
-  # body
-  File.open(raw_path).each_byte do |value|
-    vox.puts value
-  end
-end
+# File.open(vox_path, "w") do |vox|
+#   # header
+#   vox.puts mhd.dim_size.join(" ")
+#   vox.puts mhd.element_spacing.join(" ")
+# 
+#   # body
+#   File.open(raw_path).each_byte do |value|
+#     vox.puts value
+#   end
+# end

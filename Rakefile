@@ -65,7 +65,8 @@ end
 desc "Extract tissue mesh from tissue-bath mesh"
 task :extract_tissue do
   command = "'cd imaging/results; " +
-            "/home/scratch/programmes/CARP/CARP_local/bin/carpm.linux.petsc " + # carp executable
+            # "/home/scratch/programmes/CARP/CARP_local/bin/carpm.linux.petsc " + # carp executable
+            "/home/scratch/programmes/CARP/CARP_local/bin/carpm.linux.seq " + # carp executable
             "-experiment 3 " + # dont bother running simulation, just output tissue mesh
             "-meshname /users/matg/imaging/results/mesh " + # input mesh name
             "-gridout_i 2 " + # output all mesh files

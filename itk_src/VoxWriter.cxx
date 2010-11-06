@@ -66,7 +66,7 @@ int main( int argc, char *argv[] )
 	output << x_res << " " << y_res << " " << z_res << "\n";
 	for(int i=0;i<sizex*sizey*sizez;i++)
 	{
-		output << img[i] << "\n"; 
+		output << img[i] << "\n";
 	}
 
 	output.close();
