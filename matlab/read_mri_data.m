@@ -7,10 +7,10 @@ function data = read_mri_data(filename)
     frewind(fid);
     
     % read header
-    data.ncols   = fread(fid, 1, 'int16');
-    data.nrows   = fread(fid, 1, 'int16');
-    data.nslices = fread(fid, 1, 'int16');
-    data.orientation_code = fread(fid, 1, 'int16');
+    data.ncols   = fread(fid, 1, 'uint16');
+    data.nrows   = fread(fid, 1, 'uint16');
+    data.nslices = fread(fid, 1, 'uint16');
+    data.orientation_code = fread(fid, 1, 'uint16');
     data.resolution = fread(fid, [1 3], 'float32', 'a');
     
     % check file size is consistent and calculate data dimension
